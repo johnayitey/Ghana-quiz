@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghana Quiz and Money Tip of the Day</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#f5f6f3;color:#1b1b1b;line-height:1.5}
+[hidden]{display:none!important}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px 32px}
+header{padding:20px 0 12px}
+h1{margin:0;font-size:28px;font-weight:800;line-height:1.15;color:#006b3f}
+header p{margin:6px 0 0;color:#444}
+.kente{height:10px;margin:14px 0 0;border-radius:2px;background:repeating-linear-gradient(90deg,#ce1126 0 22px,#fcd116 22px 44px,#006b3f 44px 66px,#1b1b1b 66px 76px)}
+.ad{min-height:70px;margin:12px 0;text-align:center;overflow:hidden}
+.ad small{display:block;font-size:11px;color:#777;margin-bottom:2px}
+.card{background:#fff;border:1px solid #dfe3dc;border-radius:10px;padding:18px}
+.count{margin:0 0 6px;font-size:14px;color:#555}
+h2{margin:0 0 14px;font-size:21px;line-height:1.3}
+.opt,.btn{display:block;width:100%;margin:0 0 10px;padding:14px;font:inherit;font-size:17px;text-align:left;color:#1b1b1b;background:#fff;border:2px solid #cfd6cc;border-radius:8px;cursor:pointer;text-decoration:none}
+.opt:active{background:#eef3ec}
+.opt.good{background:#dff3e6;border-color:#006b3f;color:#0b3d24}
+.opt.bad{background:#fde3e6;border-color:#ce1126;color:#7a0a17}
+.btn{text-align:center;font-weight:700;background:#006b3f;border-color:#006b3f;color:#fff}
+.btn.alt{background:#fff;color:#006b3f}
+.btn.gold{background:#fcd116;border-color:#fcd116;color:#1b1b1b}
+.tip{margin:14px 0;padding:14px;background:#fff8d6;border-left:6px solid #fcd116;border-radius:4px;font-size:18px}
+.big{font-size:24px;font-weight:800;margin:0 0 4px}
+.note{font-size:12px;color:#777;margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<h1>Ghana Quiz</h1>
+<p>Play 5 questions, then get today’s money tip.</p>
+<div class="kente"></div>
+</header>
+
+<!-- Top ad banner -->
+<div class="ad"><small>Advertisement</small>
+<script>
+  atOptions = {
+    'key' : '7d7a32aa160b178fde48bc9c93e87022',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://bauval.org/22/7d7a32aa160b178fde48bc9c93e87022"></script>
+</div>
+
+<main>
+<section id="start" class="card">
+<h2>Think you know Ghana?</h2>
+<p>Answer 5 quick questions. At the end you get a free money tip you can use in Ghana, and a new tip comes every day.</p>
+<button class="btn" onclick="begin()">Start the quiz</button>
+</section>
+
+<section id="quiz" class="card" hidden>
+<p class="count" id="count"></p>
+<h2 id="q"></h2>
+<div id="opts"></div>
+<button class="btn" id="next" onclick="nextQ()" hidden></button>
+</section>
+
+<section id="result" class="card" hidden>
+<p class="big" id="score"></p>
+<p id="msg"></p>
+<p><strong>Money tip of the day</strong></p>
+<div class="tip" id="tip"></div>
+<a class="btn gold" id="offers" href="https://asiafilm.org/4/5d812c23306e06ff6f73c1bbe4b66ac5" target="_blank" rel="noopener">See more offers</a>
+<button class="btn alt" onclick="begin()">Play again</button>
+<p class="note">Offers are adverts from our partners. Come back tomorrow for a new tip.</p>
+</section>
+</main>
+
+<!-- Bottom ad banner -->
+<div class="ad"><small>Advertisement</small>
+<script>
+  atOptions = {
+    'key' : '7d7a32aa160b178fde48bc9c93e87022',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://bauval.org/22/7d7a32aa160b178fde48bc9c93e87022"></script>
+</div>
+
+</div>
+
+<script>
+// Each question: [question, correct answer, wrong 1, wrong 2, wrong 3]
+// To add a question, copy a line and change the words.
+var Q=[
+["What is the capital city of Ghana?","Accra","Kumasi","Tamale","Takoradi"],
+["In which year did Ghana gain independence?","1957","1948","1960","1966"],
+["Who was the first president of Ghana?","Kwame Nkrumah","J. B. Danquah","Jerry Rawlings","John Kufuor"],
+["What is the currency of Ghana?","Cedi","Naira","Rand","Shilling"],
+["Which colour is NOT on the Ghana flag?","Blue","Red","Gold","Green"],
+["What is the Ghana national football team called?","The Black Stars","The Super Eagles","The Indomitable Lions","The Pharaohs"],
+["Which food is made from pounded cassava and plantain?","Fufu","Waakye","Kenkey","Gari"],
+["Banku is made from fermented corn dough and what else?","Cassava dough","Rice","Beans","Yam"],
+["Waakye is rice cooked together with what?","Beans","Groundnuts","Millet","Plantain"],
+["Which city is the capital of the Ashanti Region?","Kumasi","Tema","Ho","Sunyani"],
+["Which crop is Ghana famous for exporting?","Cocoa","Tea","Wheat","Coffee"],
+["Lake Volta is famous in Ghana. What type of lake is it?","Man-made lake","Crater lake","Salt lake","Frozen lake"],
+["Mole National Park is well known for which animal?","Elephants","Penguins","Polar bears","Kangaroos"],
+["Which ocean touches the south coast of Ghana?","Atlantic Ocean","Indian Ocean","Pacific Ocean","Arctic Ocean"],
+["Which city has Ghana’s biggest sea port, built in the 1960s?","Tema","Tamale","Kumasi","Wa"],
+["What is the official language of Ghana?","English","French","Twi","Hausa"]
+];
+
+// One tip per day, in order. When you reach the end it starts again.
+// To add more tips, add new lines at the end (keep the comma after each one).
+var T=[
+"Start small with importation. Order 5 to 10 pieces of one product first, so a mistake costs you little.",
+"Before you import, check what Ghanaians already ask for on Jiji, Tonaton and Facebook Marketplace.",
+"Work out the full cost before you buy: item price, shipping, duty and transport to your town. Then set your selling price.",
+"Small and light items cost less to ship, so they are safer for beginners in importation.",
+"Pay a shipping agent only after you check reviews and ask other traders about them.",
+"Sell before you buy. Post photos, take pre-orders with a deposit, then buy only what is ordered.",
+"A Telegram channel grows faster with one clear topic, like jobs, deals or free tips. Post at the same time every day.",
+"When your Telegram channel has real followers, you can sell ad posts to local businesses. Show your view counts and start with a small price.",
+"Telegram Stars are a way for people to pay creators and bots for content and services. Read Telegram’s rules before you start.",
+"Ad networks like Adsterra pay for real visitors. Never click your own ads or buy fake traffic. It gets accounts banned.",
+"Free traffic comes from useful posts. Share tips, quizzes and short videos on Telegram, WhatsApp Status and TikTok.",
+"Write down every cedi you spend and earn in a notes app. You cannot grow what you do not measure.",
+"Keep business money apart from personal money. Use one Mobile Money number only for your business.",
+"Put your first profits back into stock or tools, not into spending.",
+"Learn one skill people pay for, like designing with Canva or editing with CapCut. Both work on a phone.",
+"Offer a flyer or logo design to nearby shops. Agree the price first, then deliver on time.",
+"Becoming a Mobile Money agent or airtime seller needs proper registration. Ask the network office for the real requirements.",
+"Beware of doubling schemes that promise to turn 100 cedis into 1,000. If it sounds too good to be true, it is.",
+"Stock up before busy times like Christmas and school reopening, when demand goes up.",
+"Buying foodstuff in bulk where it is cheap can pay, but spoilage is a risk. Start with long-lasting items like gari, beans or rice.",
+"Use WhatsApp Business for free. Add your products, prices and photos to its catalog.",
+"Take product photos in daylight with a clean background. Good photos sell more than long descriptions.",
+"Reply to customers fast. Many sales go to the person who answers first.",
+"Join a susu group or use a Mobile Money savings option. Even a few cedis each day add up.",
+"Look at your area for gaps. What do people travel far to buy? Bring it closer and charge a small fee.",
+"Short videos about local life or tips can earn over time on TikTok, YouTube and Facebook, but you must build an audience first. Post for months.",
+"With affiliate marketing you earn a commission when people buy through your link. Share only products you would truly recommend, and tell people it is a link.",
+"Check that a supplier is real. Ask for a video call, past customers to talk to, and a payment method that protects you.",
+"Do not borrow money to start a risky trade. Begin with savings you can afford to lose.",
+"Make a 30-day plan. Pick one idea, do one action every day, and review at the end of the month."
+];
+
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+var qs,n,score;
+function show(id){["start","quiz","result"].forEach(function(s){document.getElementById(s).hidden=(s!==id);});}
+function begin(){qs=shuffle(Q.slice()).slice(0,5);n=0;score=0;ask();show("quiz");window.scrollTo(0,0);}
+function ask(){
+  var q=qs[n];
+  document.getElementById("count").textContent="Question "+(n+1)+" of 5";
+  document.getElementById("q").textContent=q[0];
+  var box=document.getElementById("opts");box.innerHTML="";
+  shuffle(q.slice(1)).forEach(function(o){
+    var b=document.createElement("button");
+    b.className="opt";b.textContent=o;
+    b.onclick=function(){pick(b,o===q[1]);};
+    box.appendChild(b);
+  });
+  document.getElementById("next").hidden=true;
+}
+function pick(b,ok){
+  document.querySelectorAll(".opt").forEach(function(x){
+    x.disabled=true;
+    if(x.textContent===qs[n][1])x.classList.add("good");
+  });
+  if(ok)score++;else b.classList.add("bad");
+  var nx=document.getElementById("next");
+  nx.textContent=n<4?"Next question":"See my score and tip";
+  nx.hidden=false;
+}
+function nextQ(){n++;if(n<5){ask();}else{finish();}}
+function finish(){
+  document.getElementById("score").textContent="You got "+score+" out of 5";
+  document.getElementById("msg").textContent=score>=4?"Well done! You know your Ghana.":"Good try. Play again to beat your score.";
+  var day=Math.floor((Date.now()-new Date().getTimezoneOffset()*60000)/86400000);
+  document.getElementById("tip").textContent=T[day%T.length];
+  show("result");
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
